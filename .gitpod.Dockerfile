@@ -19,7 +19,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV FBURL=http://web.firebirdsql.org/downloads/prerelease/v40beta1/Firebird-4.0.0.1436-Beta1.tar.bz2
 ENV DBPATH=/firebird/data
 
-COPY build.sh ./build.sh
+#COPY build.sh ./build.sh
+COPY build.sh ./
 
 RUN chmod +x ./build.sh && \
     sync && \
