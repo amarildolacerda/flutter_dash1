@@ -18,10 +18,10 @@ matrix:
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter doctor
       script:
-        #- cd charts_common
+        - cd finances
         # TODO  Enable travis to run charts common test after fixing timezone test bug.
-        #- pub get
-        #- pub run test
+        - pub get
+        - pub run test
         #- cd ../charts_flutter
         - flutter test
 
