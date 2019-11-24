@@ -29,9 +29,19 @@ dependencies:
       url: https://github.com/amarildolacerda/flutter_dart
       path: controls_web
 
+  charts_flutter:
+    git:
+      url: https://github.com/amarildolacerda/charts
+      path: charts_flutter
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+#  charts_common:
+#    git:
+#      url: https://github.com/amarildolacerda/charts
+#      path: charts_common
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

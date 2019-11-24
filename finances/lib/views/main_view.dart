@@ -1,5 +1,6 @@
 import 'package:controls_web/controls/home_elements.dart';
-import 'package:controls_web/controls/shopping.dart';
+//import 'package:controls_web/controls/shopping.dart';
+import 'package:finances/charts/pie_chart_item.dart';
 
 import 'package:flutter/material.dart';
 
@@ -33,9 +34,23 @@ class _MainViewState extends State<MainView> {
               ],
             ),
           ),
+          children: _createChildren(context),
         ),
       ),
     );
+  }
+
+  List<Widget> _createChildren(context) {
+    return [
+      Container(
+        width: 200,
+        height: 150,
+        child: PieChartItem([
+          PieCharItemValue('Entradas', 100),
+          PieCharItemValue('Saídas', 100),
+        ]),
+      ),
+    ];
   }
 
   List<Widget> _createTopBars() {
