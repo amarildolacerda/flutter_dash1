@@ -1,20 +1,42 @@
 /// Simple pie chart with outside labels example.
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'chart_pair.dart';
 import 'package:flutter/material.dart';
 
-class PieChartItem extends StatelessWidget {
+class DashPieChart extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  PieChartItem(this.seriesList, {this.animate});
+  DashPieChart(this.seriesList, {this.animate});
 
   /// Creates a [PieChart] with sample data and no transition.
-  factory PieChartItem.withSampleData() {
-    return PieChartItem(
-      _createSampleData(),
+  static withSampleData() {
+    return DashPieChart(
+      createSerie(id: 'Vendas', data: [
+        ChartPair('0', 10),
+        ChartPair('1', 12),
+        ChartPair('2', 100),
+        ChartPair('3', 50),
+        ChartPair('4', 40),
+      ]),
       // Disable animations for image tests.
       animate: false,
     );
+  }
+
+  /// Create one series with sample hard coded data.
+  static List<charts.Series<ChartPair, String>> createSerie(
+      {String id, List<ChartPair> data}) {
+    return [
+      new charts.Series<ChartPair, String>(
+        id: id,
+        domainFn: (ChartPair sales, _) => sales.title,
+        measureFn: (ChartPair sales, _) => sales.value,
+        data: data,
+        // Set a label accessor to control the text of the arc label.
+        labelAccessorFn: (ChartPair row, _) => '${row.title}',
+      )
+    ];
   }
 
   @override
@@ -36,34 +58,4 @@ class PieChartItem extends StatelessWidget {
               labelPosition: charts.ArcLabelPosition.outside)
         ]));
   }
-
-  /// Create one series with sample hard coded data.
-  static List<charts.Series<PieCharItemValue, String>> _createSampleData() {
-    final data = [
-      new PieCharItemValue('Entradas', 100),
-      new PieCharItemValue('Saídas', 75),
-      //new LinearSales('2', 25),
-      //new LinearSales('3', 5),
-    ];
-
-    return [
-      new charts.Series<PieCharItemValue, String>(
-        id: 'Sales',
-        domainFn: (PieCharItemValue sales, _) => sales.title,
-        measureFn: (PieCharItemValue sales, _) => sales.value,
-        data: data,
-        // Set a label accessor to control the text of the arc label.
-        labelAccessorFn: (PieCharItemValue row, _) =>
-            '${row.title}: ${row.value}',
-      )
-    ];
-  }
-}
-
-/// Sample linear data type.
-class PieCharItemValue {
-  final String title;
-  final double value;
-
-  PieCharItemValue(this.title, this.value);
 }

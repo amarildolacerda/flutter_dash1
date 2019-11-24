@@ -1,6 +1,12 @@
 import 'package:controls_web/controls/home_elements.dart';
-//import 'package:controls_web/controls/shopping.dart';
-import 'package:finances/charts/pie_chart_item.dart';
+import 'package:finances/dashs/chart_pair.dart';
+import 'package:finances/dashs/dash_bar.dart';
+import 'package:finances/dashs/dash_container.dart';
+import 'package:finances/dashs/dash_danut.dart';
+import 'package:finances/dashs/dash_gauge.dart';
+import 'package:finances/dashs/dash_hbar.dart';
+import 'package:finances/dashs/dash_timeseries.dart';
+import '../dashs/dash_pie.dart';
 
 import 'package:flutter/material.dart';
 
@@ -23,7 +29,7 @@ class _MainViewState extends State<MainView> {
         padding: const EdgeInsets.all(8.0),
         child: SliverContents(
           body: Container(),
-          topBarsHeight: 98,
+          topBarsHeight: 70,
           toolBar: Container(
             height: 98,
             child: ListView(
@@ -42,20 +48,33 @@ class _MainViewState extends State<MainView> {
 
   List<Widget> _createChildren(context) {
     return [
-      Container(
-        width: 200,
-        height: 150,
-        child: PieChartItem([
-          PieCharItemValue('Entradas', 100),
-          PieCharItemValue('Saídas', 100),
-        ]),
+      DashContainer(child: DashTimeSeriesBar.withSampleData()),
+      DashContainer(child: DashBarChart.withSampleData()),
+      DashContainer(
+        child: DashHorizontalBarChart.withSampleData(),
       ),
+      DashContainer(
+        width: 300,
+        height: 300,
+        child: DashDanutChart.withSampleData(),
+      ),
+      DashContainer(
+        subTitle: 'Contas',
+        child: DashPieChart(DashPieChart.createSerie(id: 'Vendas', data: [
+          ChartPair('Entradas', 100),
+          ChartPair('Saídas', 120),
+        ])),
+      ),
+      DashContainer(
+        title: 'show',
+        child: DashGaugeChart.withSampleData(),
+      )
     ];
   }
 
   List<Widget> _createTopBars() {
     return [
-      ApplienceTile.panel(
+      ApplienceTile(
         image: Icon(
           Icons.announcement,
           color: Colors.white,
@@ -64,6 +83,8 @@ class _MainViewState extends State<MainView> {
         color: Colors.amber.withAlpha(250),
         title: 'A Pagar',
         value: '10',
+        valueFontSize: 28,
+        titleFontSize: 14,
       ),
       ApplienceTile.panel(
         width: 150,
