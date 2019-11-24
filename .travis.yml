@@ -21,12 +21,12 @@ matrix:
       script:
         - cd finances
         # TODO  Enable travis to run charts common test after fixing timezone test bug.
-        - flutter config --enable-web
         - flutter upgrade
+        - flutter config --enable-web
         - pub get
-        - pub run test
+        - pub run test -p "chrome,vm"
         #- cd ../charts_flutter
-        - flutter test -p "chrome,vm"
+        #- flutter test
 
 cache:
   directories:
