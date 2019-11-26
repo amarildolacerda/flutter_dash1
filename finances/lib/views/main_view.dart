@@ -59,6 +59,8 @@ class _MainViewState extends State<MainView> {
         child: DashDanutChart.withSampleData(),
       ),
       DashContainer(
+        width: double.infinity,
+        height: 500,
         subTitle: 'Contas',
         child: DashPieChart(DashPieChart.createSerie(id: 'Vendas', data: [
           ChartPair('Entradas', 100),
@@ -66,7 +68,9 @@ class _MainViewState extends State<MainView> {
         ])),
       ),
       DashContainer(
-        title: 'show',
+        //width: 400,
+        //height: 400,
+        title: 'Gauge',
         child: DashGaugeChart.withSampleData(),
       )
     ];

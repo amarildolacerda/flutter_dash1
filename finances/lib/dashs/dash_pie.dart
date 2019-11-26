@@ -13,11 +13,11 @@ class DashPieChart extends StatelessWidget {
   static withSampleData() {
     return DashPieChart(
       createSerie(id: 'Vendas', data: [
-        ChartPair('0', 10),
-        ChartPair('1', 12),
-        ChartPair('2', 100),
-        ChartPair('3', 50),
-        ChartPair('4', 40),
+        ChartPair('jan', 10),
+        ChartPair('fev', 12),
+        ChartPair('mar', 100),
+        ChartPair('abr', 50),
+        ChartPair('mai', 40),
       ]),
       // Disable animations for image tests.
       animate: false,
@@ -42,6 +42,11 @@ class DashPieChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new charts.PieChart(seriesList,
+//        layoutConfig: charts.LayoutConfig(
+//            leftMarginSpec: charts.MarginSpec.fixedPixel(150),
+//            bottomMarginSpec: charts.MarginSpec.fixedPixel(50),
+//            rightMarginSpec: charts.MarginSpec.fixedPixel(150),
+//            topMarginSpec: charts.MarginSpec.fixedPixel(50)),
         animate: animate,
         // Add an [ArcLabelDecorator] configured to render labels outside of the
         // arc with a leader line.
@@ -53,9 +58,19 @@ class DashPieChart extends StatelessWidget {
         //       new charts.ArcLabelDecorator(
         //          insideLabelStyleSpec: new charts.TextStyleSpec(...),
         //          outsideLabelStyleSpec: new charts.TextStyleSpec(...)),
-        defaultRenderer: new charts.ArcRendererConfig(arcRendererDecorators: [
-          new charts.ArcLabelDecorator(
-              labelPosition: charts.ArcLabelPosition.outside)
-        ]));
+
+        defaultRenderer: new charts.ArcRendererConfig(
+//            arcWidth: arcWidth,
+//            startAngle: 4 / 5 * pi,
+//            arcLength: 7 / 5 * pi,
+            arcRendererDecorators: [
+              new charts.ArcLabelDecorator(
+                  labelPosition: charts.ArcLabelPosition.auto)
+            ]));
+
+//        defaultRenderer: new charts.ArcRendererConfig(arcRendererDecorators: [
+//          new charts.ArcLabelDecorator(
+//              labelPosition: charts.ArcLabelPosition.auto)
+//        ]));
   }
 }

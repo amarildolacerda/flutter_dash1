@@ -12,11 +12,11 @@ class DashDanutChart extends StatelessWidget {
   static withSampleData() {
     return DashDanutChart(
       createSerie(id: 'Vendas', data: [
-        ChartPair('0', 10),
-        ChartPair('1', 12),
-        ChartPair('2', 100),
-        ChartPair('3', 50),
-        ChartPair('4', 40),
+        ChartPair('jan', 10),
+        ChartPair('fev', 12),
+        ChartPair('mar', 100),
+        ChartPair('abr', 50),
+        ChartPair('mai', 40),
       ]),
       // Disable animations for image tests.
       animate: false,
