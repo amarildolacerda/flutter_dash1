@@ -1,11 +1,11 @@
 import 'package:controls_web/controls/home_elements.dart';
-import 'package:finances/dashs/chart_pair.dart';
-import 'package:finances/dashs/dash_bar.dart';
-import 'package:finances/dashs/dash_container.dart';
-import 'package:finances/dashs/dash_danut.dart';
-import 'package:finances/dashs/dash_gauge.dart';
-import 'package:finances/dashs/dash_hbar.dart';
-import 'package:finances/dashs/dash_timeseries.dart';
+import '../dashs/chart_pair.dart';
+import '../dashs/dash_bar.dart';
+import '../dashs/dash_container.dart';
+import '../dashs/dash_danut.dart';
+import '../dashs/dash_gauge.dart';
+import '../dashs/dash_hbar.dart';
+import '../dashs/dash_timeseries.dart';
 import '../dashs/dash_pie.dart';
 
 import 'package:flutter/material.dart';
