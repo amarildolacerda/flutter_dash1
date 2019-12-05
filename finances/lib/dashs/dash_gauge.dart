@@ -11,8 +11,9 @@ class DashGaugeChart extends StatelessWidget {
   final bool animate;
   final int arcWidth;
   final double arcLenght;
+  final double startAngle;
   DashGaugeChart(this.seriesList,
-      {this.arcWidth = 40, this.arcLenght = 7 / 5 * 3.14, this.animate}) {}
+      {this.startAngle= 4 / 5 * 3.14,this.arcWidth = 40, this.arcLenght = 7 / 5 * 3.14, this.animate}) {}
 
   /// Creates a [PieChart] with sample data and no transition.
   static withSampleData() {
@@ -26,6 +27,19 @@ class DashGaugeChart extends StatelessWidget {
       ]),
 
       // Disable animations for image tests.
+      animate: false,
+    );
+  }
+  static odometro({String title,String label, @required double percent}){
+     return DashGaugeChart(
+      createSerie(id: title??'', data: [
+        ChartPair(label??'', percent),
+        ChartPair('', 100-percent),
+      ]),
+      arcWidth:50,
+      arcLenght: 3.14,
+      startAngle: 3.14,
+ // Disable animations for image tests.
       animate: false,
     );
   }
@@ -57,7 +71,7 @@ class DashGaugeChart extends StatelessWidget {
 
         defaultRenderer: new charts.ArcRendererConfig(
             arcWidth: arcWidth,
-            startAngle: 4 / 5 * pi,
+            startAngle: startAngle,
             arcLength: arcLenght,
             arcRendererDecorators: [
               new charts.ArcLabelDecorator(

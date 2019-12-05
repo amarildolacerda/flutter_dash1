@@ -48,15 +48,28 @@ class _MainViewState extends State<MainView> {
 
   List<Widget> _createChildren(context) {
     return [
-      DashContainer(child: DashTimeSeriesBar.withSampleData()),
-      DashContainer(child: DashBarChart.withSampleData()),
+
       DashContainer(
-        child: DashHorizontalBarChart.withSampleData(),
+        //width: 400,
+        //height: 400,
+        title: 'Vendas',
+        child: DashGaugeChart.odometro(title:'Vendas',label:'10%',percent:10),
+      ),
+      DashContainer(
+        //width: 400,
+        //height: 400,
+        title: 'Gauge',
+        child: DashGaugeChart.withSampleData(),
       ),
       DashContainer(
         width: 300,
         height: 300,
         child: DashDanutChart.withSampleData(),
+      ),
+      DashContainer(child: DashTimeSeriesBar.withSampleData()),
+      DashContainer(child: DashBarChart.withSampleData()),
+      DashContainer(
+        child: DashHorizontalBarChart.withSampleData(),
       ),
       DashContainer(
         width: double.infinity,
@@ -67,12 +80,6 @@ class _MainViewState extends State<MainView> {
           ChartPair('Saídas', 120),
         ])),
       ),
-      DashContainer(
-        //width: 400,
-        //height: 400,
-        title: 'Gauge',
-        child: DashGaugeChart.withSampleData(),
-      )
     ];
   }
 
