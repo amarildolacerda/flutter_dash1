@@ -48,12 +48,17 @@ class _MainViewState extends State<MainView> {
 
   List<Widget> _createChildren(context) {
     return [
-
       DashContainer(
         //width: 400,
         //height: 400,
-        title: 'Vendas',
-        child: DashGaugeChart.odometro(title:'Vendas',label:'10%',percent:10),
+
+        title: 'Meta de Vendas',
+        child: DashGaugeChart.odometro(
+          title: 'Meta de Vendas',
+          label: '10%',
+          percent: 10,
+          bottom: Center(child: Text('[] distrib')),
+        ),
       ),
       DashContainer(
         //width: 400,
