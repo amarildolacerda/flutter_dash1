@@ -1,3 +1,4 @@
+import 'package:app/appliences.dart';
 import 'package:controls_web/controls/home_elements.dart';
 import '../dashs/chart_pair.dart';
 import '../dashs/dash_bar.dart';
@@ -48,6 +49,14 @@ class _MainViewState extends State<MainView> {
 
   List<Widget> _createChildren(context) {
     return [
+      ApplienceTimeLine(title: Text('Mensagem a Noe')),
+      ApplienceTag(
+        tagWidth: 10,
+        tagColor: Colors.red,
+        title: 'Mensagem a Noe',
+        value: '10.3 m3',
+        actions: Icon(Icons.landscape),
+      ),
       DashContainer(
         //width: 400,
         //height: 400,
